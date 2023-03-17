@@ -33,14 +33,14 @@ const update = async (req, res) => {
 
 const deleteCat = async (req, res) => {
     try {
-        const numberOfRowsRemoved = await Cat.destroy(
-            { where: { id: req.params.id } }
-        )
-        res.status(200).json(numberOfRowsRemoved)
+      // We can also call destroy on an instance:
+      const cat = await Cat.findByPk(req.params.id)
+      await cat.destroy()
+      res.status(200).json(cat)
     } catch (error) {
-        res.status(500).json(error)
+      res.status(500).json(error)
     }
-}
+  }
 
 module.exports = {
     create,
