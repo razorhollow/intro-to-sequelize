@@ -30,9 +30,20 @@ const update = async (req, res) => {
     }
 }
 
+const deleteToy = async (req, res) => {
+    try {
+        const toy = await Toy.findByPk(req.params.id)
+        await toy.destroy()
+        res.status(200).json(toy)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 
 module.exports = {
     create,
     index,
-    update
+    update,
+    delete: deleteToy
 }

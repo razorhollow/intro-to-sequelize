@@ -5,5 +5,6 @@ const toysCtrl = require('../controllers/toys.js')
 router.post('/', toysCtrl.create)
 router.get('/', toysCtrl.index)
 router.put('/:id', toysCtrl.update)
+router.delete('/:id', toysCtrl.delete)
 
 module.exports = router
