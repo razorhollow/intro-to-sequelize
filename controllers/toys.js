@@ -18,8 +18,21 @@ const index = async (req, res) => {
     }
 }
 
+const update = async (req, res) => {
+    try {
+        const toy = await Toy.findByPk(req.params.id)
+        toy.set(req.body)
+        await toy.save()
+
+        res.status(200).json(toy)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 
 module.exports = {
     create,
-    index
+    index,
+    update
 }
