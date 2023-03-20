@@ -7,4 +7,6 @@ router.get('/', toysCtrl.index)
 router.put('/:id', toysCtrl.update)
 router.delete('/:id', toysCtrl.delete)
 
+router.post('/:id/containers', toysCtrl.addContainer)
+
 module.exports = router
